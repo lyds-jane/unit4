@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Palindrome Checker</title>
+</head>
+<body>
+    <h3>Is this a palindrome?</h3>
+    <p>Enter your word or phrase below:</p>
+    <input type="text" id="in"> <button type="button" onclick="checkFunction();">Click here!</button>
+    <p id="answer"></p>
+    <script>
+        function checkFunction() {
+            var txt = document.getElementById("in").value;
+            var half = txt.length/2;
+            if (txt.length%2 != 0) {
+                half = txt.length/2-0.5;
+            }
+            var first = txt.slice(0, half);
+            var second = txt.slice(-half);
+            second = second.split("");
+            second = second.reverse();
+            second = second.join("");
+            if(first == second) {
+                document.getElementById("answer").innerHTML = "Yes, this is a palindrome!";
+            }
+            else {
+                document.getElementById("answer").innerHTML = "No, this is not a palindrome";
+            }
+        }
+    </script>
+</body>
+</html>
