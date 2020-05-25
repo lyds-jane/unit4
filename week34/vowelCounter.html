@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vowel Counter</title>
+    <script>
+        function counter() {
+            // declaring the variables after each button push
+            var a = 0;
+            var e = 0;
+            var i = 0;
+            var o = 0;
+            var u = 0;
+            // getting the input
+            var txt = document.getElementById("in").value;
+            // converting input to lowercase so all vowels will be read
+            txt = txt.toLowerCase();
+            // running through each character and testing for vowels
+            for(var position = 0; position < txt.length; position++) {
+                switch(txt.charAt(position)) {
+                        case "a":
+                            a += 1;
+                            break;
+                        case "e":
+                            e += 1;
+                            break;
+                        case "i":
+                            i += 1;
+                            break;
+                        case "o":
+                            o += 1;
+                            break;
+                        case "u":
+                            u += 1;
+                            break;
+                        }
+            }
+            // outputting the variables to the HTML
+            document.getElementById("letter_a").innerHTML = a;
+            document.getElementById("letter_e").innerHTML = e;
+            document.getElementById("letter_i").innerHTML = i;
+            document.getElementById("letter_o").innerHTML = o;
+            document.getElementById("letter_u").innerHTML = u;
+
+        }
+    </script>
+</head>
+<body>
+    <h2>Enter a sentence below</h2>
+    <!-- Getting the user's input -->
+    <input type="text" id="in">
+    <!-- Button to javascript function -->
+    <button type="button" onclick="counter();">Count Vowels</button>
+    <!-- text with ids for counter variables -->
+    <p> a= <a id="letter_a"></a></p>
+    <p> e= <a id="letter_e"></a></p>
+    <p> i= <a id="letter_i"></a></p>
+    <p> o= <a id="letter_o"></a></p>
+    <p> u= <a id="letter_u"></a></p>
+
+</body>
+</html>
