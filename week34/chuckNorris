@@ -1,0 +1,56 @@
+// This code does not work as it did not output anything, there is likely some error in calling the variables
+
+
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
+// declaring variables
+const MESSAGE = readline();
+var answer = "";
+var txt = "";
+var zeros = "00 ";
+var ones = "0 ";
+
+for(var i = 0; i < MESSAGE.length; i++) {
+    // converting message into a binary string
+    txt = txt.concat(toString(MESSAGE.charCodeAt(i)));
+}
+// going through each digit of the binary string
+for(var a = 0; a < txt.length; a++){
+    var digit = txt.charAt(a);
+    switch(txt.charAt(a)){
+        case "0":
+            // add previous ones value to answer and reset ones string
+            if(ones.length > 2){
+                answer.concat(ones);
+                ones = "0 ";
+            }
+            // add to zeros string
+            zeros = zeros.concat("0");
+            break;
+        case "1":
+            // add previous zeros value to answer and reset zeros string
+            if(zeros.length > 3){
+                answer.concat(zeros);
+                zeros = "00 ";
+            }
+            // add to ones string
+            ones = ones.concat("0");
+            break;
+
+    }
+}
+// adding last element
+if(ones.length > 2){
+    answer.concat(ones);
+}
+if(zeros.length > 3){
+    answer.concat(zeros);
+}
+console.log(answer);
+
+// Write an answer using console.log()
+// To debug: console.error('Debug messages...');
