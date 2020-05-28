@@ -1,0 +1,57 @@
+// This code returns the wrong value, so there is either an error in the calculations or the re-assignment of the "closest" variable
+
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
+// the lon and lat of the user
+const LON = toNum(readline());
+const LAT = toNum(readline());
+// number of defibrilators
+const N = parseInt(readline());
+// variable for the closest defibrilator
+var closest = [0,0];
+// go through each defibrilator
+for (let i = 0; i < N; i++) {
+    var DEFIB = readline();
+    // make the defibrilator an array and get needed information
+    DEFIB = DEFIB.split(";");
+    var lon = toRadians(DEFIB[4]);
+    var lat = toRadians(DEFIB[5]);
+    // calculate the distance
+    var distance = (calculations(lon,lat));
+    // if the distance is bigger than the current closest distance, it is the new closeset distance
+    if(distance > closest[1]){
+        closest[0] = DEFIB[1];
+        closest[1] = distance;
+    }
+}
+
+// using provided formula
+function calculations(longitude, latitude){
+    var x = (longitude - LON) * Math.cos((LAT+latitude)/2);
+    var y = (latitude - LAT);
+    var d = Math.sqrt(x**2 + y**2) * 6371;
+    return d
+}
+
+// changes the , to a . and the type from a string to a float
+function toNum(numIn) {
+    numIn = numIn.replace(",",".");
+    numIn = parseFloat(numIn);
+    return numIn
+}
+
+// changes degrees to radians for the equation
+function toRadians(n) {
+    n = toNum(n);
+    var radians = n*Math.PI/180;
+    return radians
+}
+
+// Write an answer using console.log()
+// To debug: console.error('Debug messages...');
+
+console.log(closest[0]);
